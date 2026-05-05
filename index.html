@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume — [Your Name]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1B2A4A;
+      --accent: #2E5FA3;
+      --accent-light: #EBF1FA;
+      --text: #2C2C2C;
+      --muted: #666;
+      --border: #D8DDE6;
+      --bg: #FFFFFF;
+      --section-gap: 1.6rem;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: #F0F2F5;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 2rem auto;
+      background: var(--bg);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background: var(--navy);
+      padding: 2.4rem 2.8rem 2rem;
+    }
+
+    .name {
+      font-family: 'Lora', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 0.3rem;
+    }
+
+    .degree-line {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+    }
+
+    .contact-item {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.75);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-item .icon {
+      color: #8AAFD4;
+      font-style: normal;
+      font-size: 0.85rem;
+    }
+
+    /* BODY */
+    .body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      background: #F7F9FC;
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.4rem;
+    }
+
+    .sidebar-section {
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent-light);
+    }
+
+    .sidebar-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .skill-group {
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-group-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .skill-tag {
+      font-size: 0.72rem;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 2px 7px;
+      border-radius: 3px;
+    }
+
+    .skill-tag.primary {
+      background: var(--accent-light);
+      border-color: #B8CCE8;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* MAIN */
+    .main {
+      padding: 2rem 2.2rem;
+    }
+
+    .section {
+      margin-bottom: var(--section-gap);
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent-light);
+    }
+
+    .objective-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ENTRY */
+    .entry {
+      margin-bottom: 1.3rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .entry-title {
+      font-family: 'Lora', serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .entry-badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: #FFF3E0;
+      color: #B45309;
+      border: 1px solid #FBBF24;
+      padding: 1px 7px;
+      border-radius: 10px;
+      white-space: nowrap;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .entry-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .entry-org {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .entry-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .entry-stack {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: #999;
+    }
+
+    .entry-stack strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* CERT */
+    .cert-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+
+    .cert-item:last-child { border-bottom: none; }
+
+    .cert-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .cert-detail {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .cert-code {
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    .cert-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 0.9rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+    }
+
+    .top-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .top-bar-text {
+      flex: 1;
+    }
+
+    .photo-box {
+      width: 110px;
+      height: 130px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+    }
+
+    .photo-placeholder:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    @media print {
+      body { background: white; }
+      .page { margin: 0; box-shadow: none; max-width: 100%; }
+      .photo-placeholder label { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .body { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+      .top-bar { padding: 1.5rem; }
+      .name { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-text">
+        <h1 class="name">Jahn Vincent M. Roxas</h1>
+        <p class="degree-line">BS Computer Science · University of the East · 4th Year</p>
+        <div class="contact-row">
+          <div class="contact-item"><i class="icon">✉</i> roxas.jahnvincent@gmail.com</div>
+          <div class="contact-item"><i class="icon">📞</i> 0939 731 9169</div>
+          <div class="contact-item"><i class="icon">📍</i> Manila, Philippines</div>
+          <div class="contact-item"><i class="icon">⌥</i> github.com/JavieRoxas</div>
+        </div>
+      </div>
+      <div class="photo-box">
+        <img src="Roxas_pfp.jpg" alt="Profile Photo" style="width:100%; height:100%; object-fit:cover; border-radius:6px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Education</div>
+        <div class="sidebar-text">
+          <strong style="color: var(--navy); font-size: 0.85rem;">BS Computer Science</strong><br>
+          University of the East<br>
+          2022 – Present<br>
+          <span style="color: var(--accent);">Expected 2026</span>
+        </div>
+        <div class="sidebar-text" style="margin-top: 0.7rem; font-size: 0.78rem;">
+          Data Structures, OOP, Database Management, Web Systems, Computer Networks, Software Engineering
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Technical Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag primary">Python</span>
+            <span class="skill-tag primary">JavaScript</span>
+            <span class="skill-tag primary">HTML</span>
+            <span class="skill-tag primary">CSS</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Java</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag primary">VS Code</span>
+            <span class="skill-tag primary">GitHub</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Concepts</div>
+          <div class="skill-tags">
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">MVC</span>
+            <span class="skill-tag">Frontend Dev</span>
+            <span class="skill-tag">Basic Backend</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Soft Skills</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Leadership</span>
+            <span class="skill-tag">Communication</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Documentation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Certification</div>
+        <div class="sidebar-text">
+          <strong style="color: var(--navy); font-size: 0.85rem;">IT Specialist — Python</strong><br>
+          Certiport<br>
+          <span style="color: var(--accent); font-family: monospace; font-size: 0.75rem;">c6eQ-uS7B</span><br>
+          Nov 2025 · Valid until Nov 2030
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+      <div class="section">
+        <div class="section-label">Objective</div>
+        <p class="objective-text">A motivated and detail-oriented 4th year BS Computer Science student from the University of the East seeking an OJT opportunity in software development. With hands-on experience in both frontend and backend development, strong logical reasoning, and proven leadership in team environments, I aim to contribute meaningfully while gaining real-world industry exposure.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Projects</div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">
+              GAIDA
+              <span class="entry-badge">In Progress</span>
+            </div>
+            <div class="entry-date">2024 – Present</div>
+          </div>
+          <div class="entry-org">University of the East — Capstone</div>
+          <div class="entry-desc">An AI-powered virtual assistant that detects anxiety levels in UE students through voice and text analysis using NLP and sentiment analysis. Provides real-time, culturally relevant mental health support in Taglish, with session logs for professional counselor follow-up. Served as team leader handling frontend initialization, backend logic, and technical documentation.</div>
+          <div class="entry-stack"><strong>Stack:</strong> [Add your tech stack, e.g. Python · Flask · MySQL · HTML/CSS/JS]</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Mezza Haven — Tenant Guide Website</div>
+            <div class="entry-date">2025</div>
+          </div>
+          <div class="entry-org">Personal / Family Project</div>
+          <div class="entry-desc">A mobile-first informational website for tenants of a family-owned rental unit in the Philippines. Includes house rules, amenities, local area guide, and emergency contacts. Accessible via a permanent static QR code.</div>
+          <div class="entry-stack"><strong>Stack:</strong> HTML · CSS · JavaScript &nbsp;·&nbsp; github.com/yourusername/rental-guide</div>
+        </div>
+
+      </div>
+
+      <div class="section">
+        <div class="section-label">Work Experience</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Court Monitor <span style="font-size:0.8rem; font-weight:300; color: var(--muted);">(Part-Time)</span></div>
+            <div class="entry-date">2020 – 2021</div>
+          </div>
+          <div class="entry-org">Sky Zone Trampoline Park — Dubai, UAE</div>
+          <div class="entry-desc">Monitored trampoline courts to ensure guest safety and enforce park rules. Regularly tasked with organizing and supervising birthday parties and summer camp events — coordinating activities, managing groups, and ensuring a safe experience for all participants.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Certifications & Training</div>
+        <div class="cert-item">
+          <div>
+            <div class="cert-name">IT Specialist — Python</div>
+            <div class="cert-detail">Certiport &nbsp;·&nbsp; <span class="cert-code">Verification: c6eQ-uS7B</span></div>
+          </div>
+          <div class="cert-date">Nov 2025<br>Valid until Nov 2030</div>
+        </div>
+        <div class="cert-item">
+          <div>
+            <div class="cert-name">[Add certification here]</div>
+            <div class="cert-detail">[Issuer]</div>
+          </div>
+          <div class="cert-date">[Year]</div>
+        </div>
+        <div class="cert-item">
+          <div>
+            <div class="cert-name">[Add certification here]</div>
+            <div class="cert-detail">[Issuer]</div>
+          </div>
+          <div class="cert-date">[Year]</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">References available upon request</div>
+
+</div>
+
+</body>
+</html>
